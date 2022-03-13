@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> im just that cracked </title>
+    <link href="../../style.css" rel="stylesheet" type="text/css" />
+		<link rel="icon" type="image/png" href="../../midfig.png" sizes="16x16">
+  </head>
+  <body>
+		<a href="alg.html" class="home buttont"> Back</a>
+		<a href="/" class="home buttont"> Home</a>
+		<a href="../../about.html" class="home buttont"> About</a>
+		<br></br>
+		<div>
+		<header class="header header8">
+			<p> Factoring <p>
+			<p> example: (3x + 5)(4x + 9) </p>
+		</header>
+		</div>
+		<br></br>
+		<center>
+		<button class="button button9" onclick="gen()"> Next </button>
+		<br></br>
+		<p id="equation" disabled class="button button9"> Click the Next button to generate an equation</p>
+		<br></br>
+		<p class="button button9"> ( <input type="text" id="a" class="spb button9">x +<input type="text" id="b" class="spb button9">)(<input type="text" id="c" class="spb button9">x +<input type="text" id="d" class="spb button9">)</p>
+
+		<br></br>
+		<button class="button button9" onclick="solve()" id="check">Check</button>
+
+			<br></br>
+    <label class = "button button9" for="score">Score:</label>
+		<input class = "button button9" type="text" id = "score" value = "0" disabled>
+		</center>
+		<script>
+			let cnt_s = 0;
+			let cnt_e = 0;
+			let qst = 0;
+			let a;
+			let b;
+			let c;
+			let d;
+			let ans;
+			function gen() {
+				a = Math.floor(Math.random() * 10)+1;
+				b = Math.floor(Math.random() * 10)+1;
+				c = Math.floor(Math.random() * 10)+1;
+				d = Math.floor(Math.random() * 10)+1;
+				let text = "2";
+				let two = text.sup()
+				document.getElementById('equation').innerHTML = a * c + "x" + two + " + " + (a * d + b * c) + "x + " + b * d;
+			}
+			function solve() {
+				let ansa = document.getElementById('a').value;
+				let ansb = document.getElementById('b').value;
+				let ansc = document.getElementById('c').value;
+				let ansd = document.getElementById('d').value;
+				qst += 1;
+				if ((a == ansa && b == ansb && c == ansc && d == ansd) || (c == ansa && d == ansb && a == ansc && b == ansd)) {
+					cnt_s += 1;
+					document.getElementById('score').value = cnt_s + "/" + qst;
+				} else {
+					cnt_e += 1;
+					document.getElementById('score').value = cnt_s + "/" + qst;
+				}
+			}
+		</script>
+	</body>
+</html>

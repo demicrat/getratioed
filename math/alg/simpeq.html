@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> im just that cracked </title>
+    <link href="../../style.css" rel="stylesheet" type="text/css" />
+		<link rel="icon" type="image/png" href="../../midfig.png" sizes="16x16">
+  </head>
+  <body>
+		<a href="alg.html" class="home buttont"> Back</a>
+		<a href="/" class="home buttont"> Home</a>
+		<a href="../../about.html" class="home buttont"> About</a>
+		<br></br>
+		<div>
+		<header class="header header8">
+			<p> Simple Equations <p>
+			<p> (Solve for x) </p>
+		</header>
+		</div>
+		<br></br>
+		<center>
+		<button class="button button9" onclick="gen()"> Next </button>
+		<br></br>
+		<input id="equation" type = "text" disabled class="button button9">
+		<br></br>
+		<label class="button button9"> x = </label>
+		<input type="text" id="answer" class="button button9">
+		<button class="button button9" onclick="solve()" id="check">Check</button>
+
+			<br></br>
+    <label class = "button button9" for="score">Score:</label>
+		<input class = "button button9" type="text" id = "score" value = "0" disabled>
+		</center>
+		<script>
+			let cnt_s = 0;
+			let cnt_e = 0;
+			let qst = 0;
+			let x;
+			let y;
+			let z;
+			let ans;
+			function gen() {
+				x = Math.floor(Math.random() * 201)-100;
+				y = Math.floor(Math.random() * 201)-100;
+				z = Math.floor(Math.random() * 201)-100;
+				if ((z - y) % x == 0) {
+					if (y < 0) {
+						document.getElementById('equation').value = x + "x - " + y * -1 + " = " + z;
+					} else {
+						document.getElementById('equation').value = x + "x + " + y + " = " + z;
+					}
+				} else {
+					gen();
+				}
+			}
+			function solve() {
+				ans = (z - y) / x;
+				var answer = document.getElementById('answer').value;
+				qst += 1;
+				if (ans == answer) {
+					cnt_s += 1;
+					document.getElementById('score').value = cnt_s + "/" + qst;
+				}
+				if (ans != answer) {
+					cnt_e += 1;
+					document.getElementById('score').value = cnt_s + "/" + qst;
+				}
+			}
+		</script>
+	</body>
+</html>

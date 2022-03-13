@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> funcheheh </title>
+    <link href="../../../style.css" rel="stylesheet" type="text/css" />
+		<link rel="icon" type="image/png" href="../../../midfig.png" sizes="16x16">
+		
+  </head>
+  <body>
+		<a href="functions.html" class="home buttont"> Back</a>
+		<a href="/" class="home buttont"> Home</a>
+		<a href="../../../about.html" class="home buttont"> About</a>
+		<br></br>
+		<header class="header header8">
+			<p> Vertex of a Parabola <p>
+			<p> given a parabola, find the vertex </p>
+		</header>
+		</div>
+		<br></br>
+		<center>
+		<button class="button button9" onclick="gen()"> Next </button>
+		<br></br>
+		<p id="eq" class="button button9"> Click the Next Button to Generate an Equation </p>
+		<br></br>
+		<p class="button button9"> vertex = (<input type="text" id="x" class="button button9">, <input type="text" id="y" class="button button9">) </p>
+		<button class="button button9" onclick="solve()" id="check">Check</button>
+
+			<br></br>
+    <label class = "button button9" for="score">Score:</label>
+		<input class = "button button9" type="text" id = "score" value = "0" disabled>
+		</center>
+		<script>
+			let cnt_s = 0;
+			let cnt_e = 0;
+			let qst = 0;
+			let a;
+			let b;
+			let c;
+			let ans;
+			function gen() {
+				a = Math.floor(Math.random() * 21) - 10;
+				b = Math.floor(Math.random() * 21) - 10;
+				c = Math.floor(Math.random() * 21) - 10;
+				if (a == 0 || b == 0 || c == 0) {
+					gen();
+				} else {
+					if (b % (2 * a) == 0) {	
+						let text = "2";
+						let two = text.sup()
+						if (b < 0 && c < 0) {
+							document.getElementById('eq').innerHTML = "y = " + a + "x" + two + " - " + b * -1 + "x - " + c * -1;
+						} else if (b > 0 && c < 0) {
+							document.getElementById('eq').innerHTML = "y = " + a + "x" + two + " + " + b + "x - " + c * -1;
+						} else if (b < 0 && c > 0) {
+							document.getElementById('eq').innerHTML = "y = " + a + "x" + two + " - " + b * -1 + "x + " + c;
+						} else {
+							document.getElementById('eq').innerHTML = "y = " + a + "x" + two + " + " + b + "x + " + c;
+						}
+					} else {
+						gen();
+					}
+				}
+			}
+			function solve() {
+				var x = -1 * (b / (2 * a));
+				var y = a * x * x + b * x + c;
+				qst += 1;
+				if (document.getElementById('x').value == x && document.getElementById('y').value == y) {
+					cnt_s += 1;
+					document.getElementById('score').value = cnt_s + "/" + qst;
+				} else {
+					cnt_e += 1;
+					document.getElementById('score').value = cnt_s + "/" + qst;
+				}
+			}
+		</script>
+	</body>
+</html>

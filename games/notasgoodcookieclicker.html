@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> notasgoodcookieclicker </title>
+    <link href="../style.css" rel="stylesheet" type="text/css" />
+		<link rel="icon" type="image/png" href="../midfig.png" sizes="16x16">
+  </head>
+  <body>
+		<a href="/" class="home buttonr"> Home</a>
+		<a href="../about.html" class="home buttonr"> About</a>
+		<br></br>
+		<header class="header header10">
+			<h1> notasgoodcookieclicker </h1>
+		</header>
+
+		<br>
+		<!-- Tab links -->
+		<div class="tab">
+		  <button class="tablinks" onclick="openCity(event, 'Get')">Get</button>
+		  <button class="tablinks" onclick="openCity(event, 'Upgrade'), alert('Purchases are ONE-TIME only (they have lasting effect) and once done cannot be undone.')">Upgrade</button>
+			<button class="tablinks" onclick="openCity(event, 'Achievements')">Achievements</button>
+			<button class="tablinks" onclick="openCity(event, 'Settings')">Settings</button>
+		</div>
+		
+		<!-- Tab content -->
+		<div id="Get" class="tabcontent">
+			<p class="cc" id="pps"> Popularity/Second: 0 </p>
+			<br>
+		  <p class="cc"> Popularity: <input type="number" value="0" class="cc" disabled id="popularity"> </p>
+			<button class="cookieclicker" onclick="addPopularity()" style="opacity: 0.9;"> become more popular </button>
+			<br>
+			<p class="cc" id="fval"> Friends: <input type="number" value="0" class="cc" disabled id="friends"> <br></br> Value: 15 Popularity Points <br> 1p/10s</p>
+			<button class="cookieclicker" onclick="addFriends()" id="getfriends"> get more friends </button>
+			<p class="cc" id="cval"> Cliques: <input type="number" value="0" class="cc" disabled id="cliques"> <br></br> Value: 100 Popularity Points <br></br> 1p/s </p>
+			<button class="cookieclicker" onclick="addCliques()" id="getcliques"> form more cliques </button>
+			<p class="cc" id="gval"> Gangs: <input type="number" value="0" class="cc" disabled id="gangs"> <br></br> Value: 1100 Popularity Points <br></br> 8p/s </p>
+			<button class="cookieclicker" onclick="addGangs()" id="getgangs"> form more gangs </button>
+			<p class="cc" id="mval"> Mobs: <input type="number" value="0" class="cc" disabled id="mobs"> <br></br> Value: 12000 Popularity Points <br></br> 47p/s </p>
+			<button class="cookieclicker" onclick="addMobs()" id="getmobs"> form more gangs </button>
+			<p class="cc" id="rval"> Revolts: <input type="number" value="0" class="cc" disabled id="revolts"> <br></br> Value: 130000 Popularity Points <br></br> 260p/s </p>
+			<button class="cookieclicker" onclick="addRevolts()" id="getrevolts"> form more revolts </button>
+
+		</div>
+		
+		<div id="Upgrade" class="tabcontent">
+			<div class="tooltip w3-mobile">
+				<button id="clicktastic" onclick="clicktastic()" class="cc">
+	 			<span class="tooltiptext" id="clicktastictooltip">Cost: 100P Benefit: Every time you click you get 2P instead of 1 </span>
+	  		Clicktastic
+	  		</button>
+			</div>
+			<div class="tooltip w3-mobile">
+				<button id="friendtastic" onclick="friendtastic()" class="cc">
+	 			<span class="tooltiptext" id="friendtastictooltip">Cost: 20F Benefit: for every friend you get x2 the pps</span>
+	  		Friendtastic
+	  		</button>
+			</div>
+		</div>
+
+		<div id="Settings" class="tabcontent">
+			<button onclick="clearCookies()" class="cc"> Clear Cookies </button>
+		</div>
+		<script>
+			// div stuff
+			function openCity(evt, cityName) {
+			  // Declare all variables
+			  let i, tabcontent, tablinks;
+			
+			  // Get all elements with class="tabcontent" and hide them
+			  tabcontent = document.getElementsByClassName("tabcontent");
+			  for (i = 0; i < tabcontent.length; i++) {
+			    tabcontent[i].style.display = "none";
+			  }
+			
+			  // Get all elements with class="tablinks" and remove the class "active"
+			  tablinks = document.getElementsByClassName("tablinks");
+			  for (i = 0; i < tablinks.length; i++) {
+			    tablinks[i].className = tablinks[i].className.replace(" active", "");
+			  }
+			
+			  // Show the current tab, and add an "active" class to the button that opened the tab
+			  document.getElementById(cityName).style.display = "block";
+			  evt.currentTarget.className += " active";
+			}
+			
+			let popularity = 0; let friends = 0; let cliques = 0; let gangs = 0; let mobs = 0; let revolts = 0; let pclick = 1; let fclick = 1; let fcost = 15; let ccost = 100; let gcost = 1100; let mcost = 12000; let rcost = 130000;
+			function createPpS() {
+				let tempfriends = parseInt(friends) * parseInt(fclick);
+				let num = cliques + gangs * 8 + mobs * 47 + revolts * 260;
+				if (friends >= 10) {
+					tempfriends -= friends - (friends % 10);
+					num += (friends - (friends % 10)) / 10;
+				}
+				let PpS = num + "." + tempfriends;
+				document.getElementById('pps').innerHTML = "Popularity/Second: " + PpS;
+			}
+			
+			function update() {
+				document.getElementById('popularity').value = popularity;
+				document.getElementById('friends').value = friends;
+				document.getElementById('cliques').value = cliques;
+				document.getElementById('gangs').value = gangs;
+				document.getElementById('fval').innerHTML = "Friends: <input type='number' value='" + friends +"' class='cc' disabled id='friends'> <br> Value: " + fcost + " Popularity Points <br> 1p/10s";
+				document.getElementById('cval').innerHTML = "Cliques: <input type='number' value='" + cliques +"' class='cc' disabled id='cliques'> <br> Value: " + ccost + " Popularity Points <br> 1p/1s";
+				document.getElementById('gval').innerHTML = "Gangs: <input type='number' value='" + gangs +"' class='cc' disabled id='gangs'> <br> Value: " + gcost + " Popularity Points <br> 8p/1s";
+				document.getElementById('mval').innerHTML = "Mobs: <input type='number' value='" + mobs +"' class='cc' disabled id='mobs'> <br> Value: " + mcost + " Popularity Points <br> 47p/1s";
+				document.getElementById('rval').innerHTML = "Revolts: <input type='number' value='" + revolts +"' class='cc' disabled id='revolts'> <br> Value: " + rcost + " Popularity Points <br> 260p/1s";
+
+        if (popularity >= fcost) {
+          document.getElementById('getfriends').style.opacity = 1;
+        } else {
+				  document.getElementById('getfriends').style.opacity = 0.6;
+				}
+        if (popularity >= ccost) {
+          document.getElementById('getcliques').style.opacity = 1;
+        } else {
+					document.getElementById('getcliques').style.opacity = 0.6
+				}
+        if (popularity >= gcost) {
+          document.getElementById('getgangs').style.opacity = 1;
+        } else {
+					document.getElementById('getgangs').style.opacity = 0.6
+				}
+				if (popularity >= mcost) {
+					document.getElementById('getmobs').style.opacity = 1;
+				} else {
+					document.getElementById('getmobs').style.opacity = 0.6;
+				}
+				if (popularity >= rcost) {
+					document.getElementById('getrevolts').style.opacity = 1;
+				} else {
+					document.getElementById('getrevolts').style.opacity = 0.6;
+				}
+				createPpS();
+			}
+			update();
+
+			//upgrades
+			function clicktastic() {
+				if (popularity >= 100) {
+					popularity -= 100;
+					pclick *= 2;
+	  			var tooltip = document.getElementById("clicktastictooltip");
+	  			tooltip.innerHTML = "Purchased! (cannot purchase again)";
+					update();
+					document.getElementById('clicktastic').disabled = true;
+				} else {
+					alert("lol sucker ur not popular enough");
+				}
+			}
+
+			function friendtastic() {
+				if (friends >= 20) {
+					friends -= 20;
+					fclick *= 2;
+					var tooltip = document.getElementById("friendtastictooltip");
+	  			tooltip.innerHTML = "Purchased! (cannot purchase again)";
+					update();
+					document.getElementById('friendtastic').disabled = true;
+				} else {
+					alert("lol sucker ur don't have enough friends");
+				}
+			}
+			
+			//adding stuff
+			function addPopularity() {
+			  popularity += pclick;
+				update();
+			};
+			
+			function addFriends() {
+			  if (popularity >= fcost) {
+			    friends += fclick;
+			    popularity -= fcost;
+					fcost = Math.ceil(fcost * 1.15);
+					update();
+					window.setInterval(function() {
+						if (friends == 0) {
+							clearInterval(this);
+						}
+						popularity += fclick;
+						update();
+					}, 10000);
+			  }
+			}
+			
+			function addCliques() {	
+			  if (popularity >= ccost) {
+			    cliques++;
+					popularity -= ccost;
+					ccost = Math.ceil(ccost * 1.15);
+					update();
+			    window.setInterval(function() {
+						if (cliques == 0) {
+							clearInterval(this);
+						}
+						popularity++;
+						update();
+			    }, 1000);
+			  }
+			}
+
+			function addGangs() {
+				if (popularity >= gcost) {
+					gangs++;
+					popularity -= gcost;
+					gcost = Math.ceil(gcost * 1.15)
+					update();
+					window.setInterval(function() {
+						popularity += 8;
+						update()
+					}, 1000);
+				}
+			}
+
+			function addMobs() {
+				if (popularity >= mcost) {
+					mobs++;
+					popularity -= mcost;
+					mcost = Math.ceil(mcost * 1.15);
+					update();
+					window.setInterval(function() {
+						popularity += 47;
+						update()
+					}, 1000);
+				}
+			}
+
+			function addRevolts() {
+				if (popularity >= rcost) {
+					revolts++;
+					popularity -= rcost;
+					rcost = Math.ceil(rcost * 1.15);
+					update();
+					window.setInterval(function() {
+						popularity += 260;
+						update()
+					}, 1000);
+				}
+			}
+			// remember me cookie stuff
+			function setCookie() {
+				var p = "popularity=" + popularity;
+				var f = "friends=" + friends;
+				var c = "cliques=" + cliques;
+				var g = "gangs=" + gangs;
+				var m = "mobs=" + mobs;
+				var r = "revolts=" + revolts;
+				var fc = "fcost=" + fcost;
+				var cc = "ccost=" + ccost;
+				var gc = "gcost=" + gcost;
+				var mc = "mcost=" + mcost;
+				var rc = "rcost=" + rcost;
+			  const d = new Date();
+			  d.setTime(d.getTime() + (30*24*60*60*1000));
+			  let expires = "expires=" + d.toUTCString();
+			  document.cookie = p + ";" + expires + ";path=/ ";
+				document.cookie += f + ";" + expires + ";path=/ ";
+			  document.cookie += c + ";" + expires + ";path=/ ";
+			  document.cookie += g + ";" + expires + ";path=/ ";
+			  document.cookie += m + ";" + expires + ";path=/ ";
+				document.cookie += r + ";" + expires + ";path=/ ";
+				document.cookie += fc + ";" + expires + ";path=/ ";
+				document.cookie += cc + ";" + expires + ";path=/ ";
+				document.cookie += gc + ";" + expires + ";path=/ ";
+				document.cookie += mc + ";" + expires + ";path=/ ";
+				document.cookie += rc + ";" + expires + ";path=/ ";
+			}
+
+			function clearCookies() {
+				var result = confirm("Are you sure? This will clear all your progress so far.");
+				if (result) {
+					popularity = 0;
+					friends = 0;
+					cliques = 0;
+					gangs = 0;
+					mobs = 0;
+					revolts = 0;
+					pclick = 1;
+					fclick = 1;
+					fcost = 15;	
+					ccost = 100;
+					gcost = 1100;
+					mcost = 12000
+					rcost = 130000;
+					document.cookie = "";
+					update();
+					location.reload();
+					popularity = 0;
+					update();
+					location.reload();
+				}
+			}
+
+			function isLetter(str) {
+			  return str.match(/[a-z]/i);
+			}
+
+			function getCookie(cname) {
+			  let name = cname + "=";
+			  let decodedCookie = decodeURIComponent(document.cookie);
+				let position = decodedCookie.search(cname) + cname.length;
+				let ret = decodedCookie[position + 1];
+				for (let i = position + 2; i < decodedCookie.length; i++) {
+					if (!isLetter(decodedCookie[i])) {
+						console.log(decodedCookie[i]);
+						ret = ret.concat(decodedCookie[i]);
+						console.log(ret);
+					} else {
+						break;
+					}
+				}
+				return ret;
+			}
+
+			function displayInfo() {
+				if (isNaN(parseInt(getCookie("popularity")))) {
+					setCookie();
+				}
+			  popularity = parseInt(getCookie("popularity"));
+				update();
+				friends = parseInt(getCookie("friends"));
+				for (let i = 0; i < friends; i++) {
+					window.setInterval(function() {
+						popularity += fclick;
+						update();
+			    }, 10000);
+				}
+				
+				cliques = parseInt(getCookie("cliques"));
+				for (let i = 0; i < cliques; i++) {
+					window.setInterval(function() {
+						popularity++;
+						update();
+			    }, 1000);
+				}
+				gangs = parseInt(getCookie("gangs"));
+				for (let i = 0; i < gangs; i++) {
+					window.setInterval(function() {
+						popularity += 8;
+						update();
+			    }, 1000);
+				}
+				mobs = parseInt(getCookie("mobs"));
+				for (let i = 0; i < mobs; i++) {
+						window.setInterval(function() {
+						popularity += 47;
+						update()
+					}, 1000);				
+				}
+
+				revolts = parseInt(getCookie("revolts"));
+				for (let i = 0; i < revolts; i++) {
+						window.setInterval(function() {
+						popularity += 260;
+						update()
+					}, 1000);				
+				}
+				fcost = parseInt(getCookie("fcost"));
+				ccost = parseInt(getCookie("ccost"));
+				gcost = parseInt(getCookie("gcost"));
+				mcost = parseInt(getCookie("mcost"));
+				rcost = parseInt(getCookie("rcost"));
+				update();
+			}
+
+			displayInfo();
+			
+			window.setInterval(function() {
+				setCookie();
+			}, 1000);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> im just that cracked </title>
+    <link href="../../style.css" rel="stylesheet" type="text/css" />
+		<link rel="icon" type="image/png" href="../../midfig.png" sizes="16x16">
+  </head>
+  <body>
+		<a href="alg.html" class="home buttont"> Back</a>
+		<a href="/" class="home buttont"> Home</a>
+		<a href="../../about.html" class="home buttont"> About</a>
+		<br></br>
+		<div>
+		<header class="header header8">
+			<p> Simple Equations <p>
+			<p> (Solve for x) </p>
+		</header>
+		</div>
+		<br></br>
+		<center>
+		<button class="button button9" onclick="gen()"> Next </button>
+		<br></br>
+		<input id="eq1" type = "text" disabled class="button button9">
+		<br></br>
+		<input id="eq2" type="text" disabled class="button button9">
+		<br></br>
+		<label class="button button9"> x = </label>
+		<input type="text" id="xanswer" class="button button9">
+		<label class="button button9"> y = </label>
+		<input type="text" id="yanswer" class="button button9">
+		<button class="button button9" onclick="solve()" id="check">Check</button>
+		<br></br>
+    <label class = "button button9" for="score">Score:</label>
+		<input class = "button button9" type="text" id = "score" value = "0" disabled>
+		</center>
+		<script>
+			let cnt_s = 0;
+			let cnt_e = 0;
+			let qst = 0;
+			// gonna be like 
+			// 1st eq: ax + by = c;
+			// 2nd eq: dy = e - ax;
+			// basically ax + by = c; ax + dy = e; = by - dy = c - e; 
+			// requirements: (c - e) % (b - d) == 0
+			// x = (c - by)/a
+			let a;
+			let b;
+			let c;
+			let d;
+			let e;
+			let ansx;
+			let ansy;
+			function gen() {
+				a = Math.floor(Math.random() * 201)-100;
+				b = Math.floor(Math.random() * 201)-100;
+				c = Math.floor(Math.random() * 201)-100;
+				d = Math.floor(Math.random() * 201)-100;
+			  e = Math.floor(Math.random() * 201)-100;
+				
+				if ((c - e) % (b - d) == 0) {
+					let temp = (c - e) / (b - d);
+					if ((c - (b * temp)) % a == 0) { 
+						if (b < 0) {
+							document.getElementById('eq1').value = a + "x - " + b * -1 + "y = " + c;
+						} else {
+							document.getElementById('eq1').value = a + "x + " + b + "y = " + c;	
+						}
+						if (a < 0) {
+							document.getElementById('eq2').value = d + "y = " + e + " + " + a * -1 + "x";
+						} else {
+							document.getElementById('eq2').value = d + "y = " + e + " - " + a + "x";
+						}
+					} else {
+						gen();
+					}
+				} else {
+					gen();
+				}
+			}
+			function solve() {
+				ansy = (c - e) / (b - d);
+				ansx = (c - (b * ansy)) / a;
+				var answer1 = document.getElementById('xanswer').value;
+				var answer2 = document.getElementById('yanswer').value;
+				qst += 1;
+				if (ansx == answer1 && ansy == answer2) {
+					cnt_s += 1;
+					document.getElementById('score').value = cnt_s + "/" + qst;
+				} else {
+					cnt_e += 1;
+					document.getElementById('score').value = cnt_s + "/" + qst;
+				}
+			}
+		</script>
+	</body>
+</html>

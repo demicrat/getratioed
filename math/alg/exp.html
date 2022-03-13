@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> im just that cracked </title>
+    <link href="../../style.css" rel="stylesheet" type="text/css" />
+		<link rel="icon" type="image/png" href="../../midfig.png" sizes="16x16">
+  </head>
+  <body>
+		<a href="alg.html" class="home buttont"> Back</a>
+		<a href="/" class="home buttont"> Home</a>
+		<a href="../../about.html" class="home buttont"> About</a>
+		<br></br>
+		<div>
+		<header class="header header8">
+				<p> exponents </p>
+		</header>
+		</div>
+		<br>
+		<center>
+		<button class="button button9" onclick="gen()"> Next </button>
+		<br></br>
+		<input id="val1" type = "text" disabled class="button button9">
+		<input type="text" value = "^" class="button button9" disabled>
+		<input type="text" id="val2" disabled class="button button9">
+		= 
+		<input type="text" id="val3" class="button button9">
+		<br></br>
+		<button class="button button9" onclick="solve()" id="check">Check</button>
+		<br></br>
+    <label class = "button button9" for="score">Score:</label>
+		<input class = "button button9" type="text" id = "score" value = "0" disabled>
+		</center>
+		<script>
+			let cnt_s = 0;
+			let cnt_e = 0;
+			let qst = 0;
+			let x;
+			let y;
+			let ans;
+			var z = getElementById('val3').value;
+			function gen() {
+				x = Math.floor(Math.random() * 20);
+				if (x <= 3) {
+					y = Math.floor(Math.random() * 4) + 3;
+				} else if (x > 3 && x < 10) {
+					y = Math.floor(Math.random() * 2) + 2;
+				} else if (x == 10) {
+					y = Math.floor(Math.random() * 10);
+				} else {
+					y = 2;
+				}
+				document.getElementById('val1').value = x;
+				document.getElementById('val2').value = y;
+			}
+			function solve() {
+				ans = Math.pow(x, y);
+				var z = document.getElementById('val3').value;
+				qst += 1;
+				if (ans == z) {
+					cnt_s += 1;
+					document.getElementById('score').value = cnt_s + "/" + qst;
+				}
+				if (ans != z) {
+					cnt_e += 1;
+					document.getElementById('score').value = cnt_s + "/" + qst;
+				}
+			}
+		</script>
+	</body>
+</html>

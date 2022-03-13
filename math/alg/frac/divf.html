@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> im just that cracked </title>
+    <link href="../../../style.css" rel="stylesheet" type="text/css" />
+		<link rel="icon" type="image/png" href="../../../midfig.png" sizes="16x16">
+  </head>
+  <body>
+		<a href="fractions.html" class="home buttont"> Back</a>
+		<a href="/" class="home buttont"> Home</a>
+		<a href="../../../about.html" class="home buttont"> About</a>
+		<br></br>
+		<div>
+		<header class="header header8">
+			<p> Adding Fractions :) </p>
+		</header>
+		</div>
+		<br></br>
+		<center>
+			<button class="button button9" onclick="gen()"> Next </button>
+			<br></br>
+			<p id="eq" class="button button9"> Click the Next button to generate the equation </p>
+			<button class="button button9" onclick="solve()" id="check">Check</button>
+			<br></br>
+	    <label class = "button button9" for="score">Score:</label>
+			<input class = "button button9" type="text" id = "score" value = "0" disabled>
+		</center>
+		<script>
+			let cnt_s = 0;
+			let cnt_e = 0;
+			let qst = 0;
+			let num1;
+			let den1;
+			let num2;
+			let den2;
+			let num3;
+			let den3;
+			function gen() {
+				num1 = Math.floor(Math.random() * 10) + 1;
+				num2 = Math.floor(Math.random() * 10) + 1;
+				den1 = Math.floor(Math.random() * 10) + 1;
+				den2 = Math.floor(Math.random() * 10) + 1;
+				document.getElementById('eq').innerHTML = "<fraction> <numer>" + num1 + "</numer>" + den1 + "</fraction> ÷	<fraction> <numer>" + num2 + "</numer>" + den2 + "</fraction> = <input class='spb button9' id='num3'> / <input color'white' class='spb button9' id='den3'>";
+			}
+			
+			function gcd(a, b) {
+				if (a == 0) {
+					return b;
+				}
+				return gcd(b % a, a);
+			}
+			
+			function lowest(a, b) {
+				let common_factor = gcd(a, b);
+				den3 = den3/common_factor;
+				num3 = num3/common_factor;
+			}
+			
+			function solve() {
+				num3 = num1 * den2;
+				den3 = num2 * den1;
+				lowest(num3, den3);
+				qst += 1;
+				let ans1 = document.getElementById('num3').value;
+				let ans2 = document.getElementById('den3').value;
+				if (ans1 == num3 && ans2 == den3) {
+					cnt_s += 1;
+					document.getElementById('score').value = cnt_s + "/" + qst;
+				}	else {
+					cnt_e += 1;
+					document.getElementById('score').value = cnt_s + "/" + qst;
+				}
+			}
+		</script>
+	</body>
+</html>

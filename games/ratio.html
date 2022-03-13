@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> get ratioed </title>
+    <link href="../style.css" rel="stylesheet" type="text/css" />
+		<link rel="icon" type="image/png" href="../midfig.png" sizes="16x16">
+  </head>
+  <body>
+		<a href="/" class="home buttonv"> Home</a>
+		<a href="../about.html" class="home buttonv"> About</a>
+		<br> </br>
+	<div>
+		<header class="header header5">
+			<h1> Ratio Generator</h1>
+				<p> aeaeheaeuaheuaehae</p>
+		</header>
+		<br></br>
+		<center>
+			<label class="label ratio" for="guessField"> How Many Ratios You Want (between 1 - 133): </label>
+			<br></br>
+			<input class="button guessn" type="number" id="input" min="1" max="133">
+			<br> </br>
+			<input type="submit" class = "label ratio" id="submit">
+			<br></br>
+
+		</center>
+		<script>
+			document.getElementById("submit").onclick = function() {
+			const insults = ["ur white", " + eyebrows worse than iva's", " + get good", " + didn't ask", " + don't care", " + vitam non habes", " + harker kid", " + mean girl", " + cope", " + L", " + bozo", " + seethe", " + mad cuz bad", " + clownery", " + no u", " + ur mother", " + you fell off", " + RATIOED", " + beta", " + cringe", " + Karen", " + stfu", " + ok boomer", " + emo", " + depressed asf", " + brocken", " + melior quam tu sum", " + bad at math", " + u play fornite", " + swifties are bad", " + mr. barber", " + you bring the class average down", " + charlie gordon moment", " + koreaboo", " + oli london fan", " + iq low eq low", " + im not mad im dissapointed", " + eating pizza sideways", " + you play among us", " + skill issue", " + demented", " + bing chillin", " + vegan", " + ok", " + don't be dry", " + period cramps = you", " + get a job", " + broke", " + unfunny", " + fake asf", " + go away", " + two faced liar", " + flocci non facio", " + me chop chop you caput", " + sexist", " + macbook user", " + sksksk", " + tryhard", " + caught in 4k", " + ms. tran vibes", " + TLE", " + WA 0", " + Runtime Error", " + Dangerous Syscall 0", " + you use repl", " + disgrace", " + pushover", " + corden", " + fatphobic", " + skinnyphobic", " + lanky", " + fake news", " + actually bad", " + expired coupon", " + spam email", " + wet sock", " + one test case away from passing", " + boycrazy", " + counter ratio", " + ungood", " + 眼不见心不烦", " + whitewashed", " + hair musty asf", " + harry x draco phase 🤮", " + 🥶🥶🥶", " + 🤡🤡🤡", " + </3", " + in denial", " + membean", " + momma's boy/girl", " + disrespectful", " + shorter than i am", " + furry vibes (rawr grr)", " + c*der", " + google hangouts", " + salvius vibes", " + non benignus es", " + crudelis es", " + spanish taker", " + non latin smh", " + memes in general 🤣🤣🤣", " + unable to solve rubix cube", " + gen z", " + racist", " + carl bot lover", " + disrespect the mods", " + angsty teenagers", " + high on vitamins", " + discord xp grinder", " + pronouns in bio", " + anime pfp", " + dreamsexual🤮🤮", " + racially motivated", " + cancelled 🚫🚫🚫", " + idc", " + suck it up", " + :bangbang: ‼️ ‼️", " + says you", " + touch grass", " + ok and?", " + cap", " + not funny didn't laugh", " + reported!", " + blocked!", " + rip", " + done for", " + irrelavent", " + jealous", " + your problem", " + go ahead and whine about it", " + don't even care anymore", " + eat glass", " + cry about it" + " + unveracious"]
+				let rrr = insults[0];
+				let vis = new Array(insults.length).fill(false);
+				vis[0] = true;
+				for (let i = 0; i < document.getElementById("input").value - 1; i++) {
+					let num = Math.floor(Math.random() *(insults.length + 1));
+					if (num >= insults.length || (vis[num] == true) || (insults[num] == 'undefined' || insults[num] == "undefined")) {
+						i--;
+						continue;
+					} else {
+						vis[num] = true;
+					}
+					if (insults[num] != 'undefined' && insults[num] != "undefined") {
+						rrr = rrr.concat(insults[num]);
+					}
+				}
+				alert(rrr);
+			}
+		</script>
+		<script src="../script.js"></script>
+		</div>
+		<br></br>
+	</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> funcheheh </title>
+    <link href="../../../style.css" rel="stylesheet" type="text/css" />
+		<link rel="icon" type="image/png" href="../../../midfig.png" sizes="16x16">
+		
+  </head>
+  <body>
+		<a href="functions.html" class="home buttont"> Back</a>
+		<a href="/" class="home buttont"> Home</a>
+		<a href="../../../about.html" class="home buttont"> About</a>
+		<br></br>
+		<header class="header header8">
+			<p> Determining Equations <p>
+			<p> Given two points on a line, find the equation for the line and put it in slope-intercept form </p>
+		</header>
+		</div>
+		<br></br>
+		<center>
+		<button class="button button9" onclick="gen()"> Next </button>
+		<br></br>
+		<button disabled class="button button9"> Point1 = <input type="text" id="point1" class="button button9" disabled> <br></br> Point2 = <input disabled type="text" id="point2" class="button button9"></button>
+		<br>
+		<p class="button button9"> y = <input type="text" id="m" class="button button9"> x + 		<input type="text" id="b" class="button button9"></p>
+		<button class="button button9" onclick="solve()" id="check">Check</button>
+
+			<br></br>
+    <label class = "button button9" for="score">Score:</label>
+		<input class = "button button9" type="text" id = "score" value = "0" disabled>
+		</center>
+		<script>
+			let cnt_s = 0;
+			let cnt_e = 0;
+			let qst = 0;
+			let a;
+			let b;
+			let c;
+			let d;
+			function gen() {
+				a = Math.floor(Math.random() * 21) - 10;
+				b = Math.floor(Math.random() * 21) - 10;
+				c = Math.floor(Math.random() * 21) - 10;
+				d = Math.floor(Math.random() * 21) - 10;
+				if ((d - b) % (c - a)== 0) {
+					document.getElementById('point1').value = "(" + a + ", " + b + ")";
+					document.getElementById('point2').value = "(" + c + ", " + d + ")";
+						document
+				} else {
+						gen()
+				}
+			}
+			
+			function solve() {
+				qst += 1;
+				let slope = (d - b) / (c - a);
+				let yint = (slope * -a) + b;
+				if (b == d) {
+					slope = 0;
+					yint = b;
+				}
+				if ((document.getElementById('m').value == slope) && document.getElementById('b').value == yint) {
+					cnt_s += 1;
+					document.getElementById('score').value = cnt_s + "/" + qst;
+				} else {
+					cnt_e += 1;
+					document.getElementById('score').value = cnt_s + "/" + qst;
+				}
+			}
+		</script>
+	</body>
+</html>

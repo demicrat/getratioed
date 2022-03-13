@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> codepenbutworse </title>
+		    <link href="../style.css" rel="stylesheet" type="text/css"/>
+
+		<link rel="icon" type="image/png" href="../midfig.png" sizes="16x16">
+		<link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap" rel="stylesheet">
+		<style id="stylishuwu">
+			
+		</style>
+  </head>
+  <body>
+		<a href="/" class="home buttonq"> Home</a>
+		<a href="about.html" class="home buttonq"> About</a>
+		<header class="header header11">
+			<p>codepenbutworse</p>
+		</header>
+		<br></br>
+		<label class="button button14"> HTML: </label>
+		<label class="button button14"> CSS: </label>
+		<br></br>
+		<textarea id="code-area" class="textarea" rows="20" cols="30"></textarea>
+		<textarea id="style-area" class="textarea" rows="20" cols="30"></textarea>
+		<center>
+			<button class="button button14" onclick="executecSS()"> excecute </button>
+		</center>
+		<div id="codeAreA"> </div>
+		<script>
+			function executecSS() {
+				let codeArea = document.getElementById('style-area');
+				let code = codeArea.value;
+				document.getElementById('stylishuwu').value = code;
+				console.log(document.getElementById('stylishuwu').value)
+				executeCode();
+			}
+			function executeCode() {
+				let codeArea = document.getElementById('code-area');
+				let code = codeArea.value;
+				document.getElementById('codeAreA').innerHTML = code;
+			}
+		</script>
+	</body>
+</html>

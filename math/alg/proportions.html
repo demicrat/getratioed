@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> im just that cracked </title>
+    <link href="../../style.css" rel="stylesheet" type="text/css" />
+		<link rel="icon" type="image/png" href="../../midfig.png" sizes="16x16">
+  </head>
+  <body>
+		<a href="alg.html" class="home buttont"> Back</a>
+		<a href="/" class="home buttont"> Home</a>
+		<a href="../../about.html" class="home buttont"> About</a>
+		<br></br>
+		<div>
+		<header class="header header8">
+			<p> proportions >:) </p>
+		</header>
+		</div>
+		<br></br>
+		<center>
+			<button class="button button9" onclick="gen()"> Next </button>
+			<br></br>
+			<p id="eq" class="button button9"> Click the Next button to generate the equation </p>
+			<br></br>
+			<p class="button button9"> x = <input class="button button9" id="answer"> </p>
+			<button class="button button9" onclick="solve()" id="check">Check</button>
+			<br></br>
+	    <label class = "button button9" for="score">Score:</label>
+			<input class = "button button9" type="text" id = "score" value = "0" disabled>
+		</center>
+		<script>
+			let cnt_s = 0;
+			let cnt_e = 0;
+			let qst = 0;
+			let x;
+			let y;
+			let z;
+			function gen() {
+				x = Math.floor(Math.random() * 100);
+				y = Math.floor(Math.random() * 100);
+				z = Math.floor(Math.random() * 100);
+				if ((y * z) % x == 0) {
+					document.getElementById('eq').innerHTML = "<fraction> <numer>" + x + "</numer>" + y + "</fraction> = <fraction> <numer>" + z + "</numer> x </fraction";
+				} else {
+					gen();
+				}
+			}
+			function solve() {
+				ans = (y * z) / x;
+				qst += 1;
+				if (document.getElementById('answer').value == ans) {
+					cnt_s += 1;
+					document.getElementById('score').value = cnt_s + "/" + qst;
+				}	else {
+					cnt_e += 1;
+					document.getElementById('score').value = cnt_s + "/" + qst;
+				}
+			}
+		</script>
+	</body>
+</html>

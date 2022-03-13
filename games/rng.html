@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> guess the number >:) </title>
+		<link href="../style.css" rel="stylesheet" type="text/css" />
+		<link rel="icon" type="image/png" href="../midfig.png" sizes="16x16">
+	</head>
+	<body>
+		
+		<a href="/" class="home button1"> Home</a>
+		<a href="../about.html" class="home button1"> About</a>
+	  <br></br>
+		<header class="header header1">
+			<h1> Guess the Number!! </h1>
+			<p> yeah ik this is totally lame but ya can't blame me cuz i was bored >:) </p>
+		</header>
+		<br></br>
+		<center>
+			<label class="label guess" for="guessField"> Quantity (between 1 - 100): </label>
+			<br>
+			<br>
+			<input class="button guessn" type="text" placeholder="enter guess" id="guessField" min="1" max="100"> </input>
+			<br>
+			<input onclick="processguess()" type = "submit" value = "Submit guess" class = "label guess" id = "submitguess">
+			<br></br>
+		<script>
+	    // random value generated
+			let input = document.getElementById("guessField");
+			input.addEventListener("keyup", function(event) {
+			  if (event.keyCode === 13) {
+			    event.preventDefault();
+					document.getElementById('submitguess').click();
+			  }
+			});
+	
+			let guesscorrect = false;
+	    let y = Math.floor(Math.random() * 100) + 1;
+	    // counting the number of guesses
+	    // made for correct Guess
+	    let guess = 1;
+			function processguess() {
+				// number guessed by user     
+	  	  let x = document.getElementById("guessField").value;
+		  	if (x == y) {    
+	     	 alert("why you gotta be so smart broski ;-; - YOU GUESSED IT RIGHT IN " + guess + " GUESSES");
+					y = Math.floor(Math.random() * 100) + 1;
+					guess = 0;
+					processguess();
+	  		} else {
+					if (x > y) { /* if guessed number is greater than actual number*/ 
+		  		  guess++;
+		 	  	  alert("lmao loser try a smaller number");
+					} else if (x < y) {
+		    		guess++;
+		     	 	alert("lmao loser try a greater number");
+	   			}
+				}
+			}
+		</script>
+	</center>
+	</body>
+</html>

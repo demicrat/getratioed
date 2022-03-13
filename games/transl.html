@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> Martian </title>
+    <link href="../style.css" rel="stylesheet" type="text/css" />
+		<link rel="icon" type="image/png" href="../midfig.png" sizes="16x16">
+  </head>
+  <body>
+		<a href="/" class="home buttonu"> Home</a>
+		<a href="../about.html" class="home buttonu"> About</a>
+		<br></br>
+		<header class="header header6"> 
+			<h1> English to Martian Translator</h1>
+				<p> type type type type </p>
+		</header>
+		<br></br>
+		<center>
+			<label class="label transl" for="guessField"> English to Martian:</label>
+			<input type="text" class="label transl" id="input"> </input>
+			<input type = "submit" class = "label transl" id = "submit">
+			<br></br>
+			<input type="text" value=someplaceholdertextheredontmindme id="output" class="button button7 heh" disabled>
+			<div class="tooltip w3-mobile">
+			<button onclick="copy()" onmouseout="outFunc()" class="button button7">
+ 			 <span class="tooltiptext" id="myTooltip">Copy to clipboard</span>
+  		Copy text
+  		</button>
+</div>
+		<!-- 	<button class="button button7" onclick="copy()"> Copy to Clipboard </button>
+			<span class=tooltiptext"> lmao </span> -->
+			<script>
+		document.getElementById("submit").onclick = function() {
+				const mars = new Map();
+				mars.set("a", "b");
+				mars.set("A", "Æ");
+				mars.set("b", "Ð");
+				mars.set("B", "Ø");
+				mars.set("c", "Ü");
+				mars.set("C", "ñ");
+				mars.set("d", "¤");
+				mars.set("D", "¶");
+				mars.set("e", "µ");
+				mars.set("E", "³");
+				mars.set("f", "∃");
+				mars.set("F", "∂");
+				mars.set("g", "∋");
+				mars.set("G", "∉");
+				mars.set("h", "∇"); 
+				mars.set("H", "∏");
+				mars.set("i", "∑");
+				mars.set("I", "√");
+				mars.set("j", "∝");
+				mars.set("J", "∞");
+				mars.set("k", "∠");
+				mars.set("K", "∧");
+				mars.set("l", "∨");
+				mars.set("L", "∩");
+				mars.set("m", "∪");
+				mars.set("M", "∫");
+				mars.set("n", "∴");
+				mars.set("N", "∼");
+				mars.set("o", "≅");
+				mars.set("O", "≈");
+				mars.set("p", "≠");
+				mars.set("P", "≡");
+				mars.set("q", "≤");
+				mars.set("Q", "⊂");
+				mars.set("r", "⊃");
+				mars.set("R", "Θ");
+				mars.set("s", "Ψ");
+				mars.set("S", "Ω");
+				mars.set("t", "β");
+				mars.set("T", "δ");
+				mars.set("u", "ζ");
+				mars.set("U", "η");
+				mars.set("v", "λ");
+				mars.set("V", "ξ");
+				mars.set("w", "ϑ");
+				mars.set("W", "ϖ");
+				mars.set("x", "ς");
+				mars.set("X", "σ");
+				mars.set("y", "Œ");
+				mars.set("Y", "Ÿ");
+				mars.set("z", "œ");
+				mars.set("Z", "Š");
+				mars.set("!", "†");
+				mars.set(".", "‡");
+				mars.set("?", "‰");
+				mars.set(" ", " ");
+				let str = document.getElementById("input").value;
+				let output = " ";
+				for (let i = 0; i < str.length; i++) {
+						output = output.concat(mars.get(str.charAt(i)));
+					}
+				document.getElementById("output").value = output; 
+				}
+			function copy() {
+  /* Get the text field */
+  let copyText = document.getElementById("output");
+
+  /* Select the text field */
+  copyText.select();
+  copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+   /* Copy the text inside the text field */
+  navigator.clipboard.writeText(copyText.value);
+
+  /* Alert the copied text */
+			}
+			function outFunc() {
+  			let tooltip = document.getElementById("myTooltip");
+  			tooltip.innerHTML = "Copy to clipboard";
+			}
+				
+			function copy() {
+  			let copyText = document.getElementById("output");
+  			copyText.select();
+ 				copyText.setSelectionRange(0, 99999);
+  			navigator.clipboard.writeText(copyText.value)
+  			let tooltip = document.getElementById("myTooltip");
+ 			  tooltip.innerHTML = "Copied: " + copyText.value;
+			}
+				
+			function outFunc() {
+  			let tooltip = document.getElementById("myTooltip");
+  			tooltip.innerHTML = "Copy to clipboard";
+			}
+
+			</script>
+			<script src="../script.js"></script>
+
+		</center>
+	</body>
+</html>
