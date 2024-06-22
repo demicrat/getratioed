@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> rippedoffhangman </title>
+    <link href="../../style.css" rel="stylesheet" type="text/css" />
+		<link rel="icon" type="image/png" href="../../midfig.png" sizes="16x16">
+  </head>
+  <body>
+		<a href="/" class="home buttonl"> Home</a>
+		<a href="../../about.html" class="home buttonl"> About</a>
+		<br></br>
+		<header class="header header15">
+			<h1> rippedoffhangman </h1>
+		</header>
+		<br>
+		<p id="thingy">
+			<br>
+			<button class="button button18"> Choose one: </button>
+			<select id="level" class="button button18"> 
+				<option class="button button18" value="1"> 1 letter </option>
+				<option class="button button18" value="2"> 2 letter </option>
+				<option class="button button18" value="3"> 3 letter </option>
+				<option class="button button18" value="4"> 4 letter </option>
+				<option class="button button18" value="5"> 5 letter </option>
+			</select>
+			<input value="play" type="submit" onclick="play()" class="button button18">
+		</p>
+																																																	
+		<script src="words.js"></script>
+		<script>
+			function play() {
+				let words = document.getElementById('level').value;
+				let word;
+				if (words == "1") {
+					word = words1[Math.floor(Math.random() * (words1.length - 0 + 1))];
+				} else if (words == "2") {
+					word = words2[Math.floor(Math.random() * (words2.length - 0 + 1))];
+				} else if (words == "3") {
+					word = words3[Math.floor(Math.random() * (words3.length - 0 + 1))];
+				} else if (words == "4") {
+					word = words4[Math.floor(Math.random() * (words4.length - 0 + 1))];
+				} else if (words == "5") {
+					word = words5[Math.floor(Math.random() * (words5.length - 0 + 1))];
+				} else if (words == "6") {
+					word = words6[Math.floor(Math.random() * (words6.length - 0 + 1))];
+				}
+				console.log(word);
+				document.getElementById('thingy').innerHTML = "<br> <img src='stand.jpg'> <br>";
+				for (let i = 0; i < word.length; i++) {
+					document.getElementById('thingy').innerHTML += "<img src='wordtick.jpg'>";
+				}
+				document.getElementById('thingy').innerHTML += "<center> <img src='letters/q.jpg'> <img src='letters/w.jpg'><img src='letters/e.jpg'><img src='letters/r.jpg'><img src='letters/t.jpg'><img src='letters/y.jpg'><img src='letters/u.jpg'><img src='letters/i.jpg'><img src='letters/o.jpg'><img src='letters/p.jpg'><br><img src='letters/a.jpg'><img src='letters/s.jpg'><img src='letters/d.jpg'><img src='letters/f.jpg'><img src='letters/g.jpg'><img src='letters/h.jpg'><img src='letters/j.jpg'><img src='letters/k.jpg'><img src='letters/l.jpg'> <br> <img src='letters/z.jpg'><img src='letters/x.jpg'><img src='letters/c.jpg'><img src='letters/v.jpg'><img src='letters/b.jpg'><img src='letters/n.jpg'><img src='letters/m.jpg'></center> ";
+
+			}
+			function evaluate(word) {
+				let guess = document.getElementById('guess').value;
+				document.getElementById('thingy').innerHTML = "<img src='stand.jpg'> <br> <center> <img src='letters/q.jpg'> <img src='letters/w.jpg'><img src='letters/e.jpg'><img src='letters/r.jpg'><img src='letters/t.jpg'><img src='letters/y.jpg'><img src='letters/u.jpg'><img src='letters/i.jpg'><img src='letters/o.jpg'><img src='letters/p.jpg'><br><img src='letters/a.jpg'><img src='letters/s.jpg'><img src='letters/d.jpg'><img src='letters/f.jpg'><img src='letters/g.jpg'><img src='letters/h.jpg'><img src='letters/j.jpg'><img src='letters/k.jpg'><img src='letters/l.jpg'> <br> <img src='letters/z.jpg'><img src='letters/x.jpg'><img src='letters/c.jpg'><img src='letters/v.jpg'><img src='letters/b.jpg'><img src='letters/n.jpg'><img src='letters/m.jpg'></center> <br> <img src='stand.jpg'> ";
+			}
+		</script>
+	</body>
+</html>

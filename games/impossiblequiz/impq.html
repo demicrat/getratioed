@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> ripoffimpossiblequiz </title>
+    <link href="../../style.css" rel="stylesheet" type="text/css" />
+		<link rel="icon" type="image/png" href="/midfig.png" sizes="16x16">
+		
+  </head>
+  <body>
+		<a href="/" class="button"><img src="config/home.jpg"></a>
+		<a href="../../about.html" class="button"> <img src="config/about.jpg"></a>
+	<center>
+		<p id="questionarea"> 
+			<img src="config/begin.jpg" onmouseover="this.src='config/hoverbegin.jpg'" onmouseout="this.src='config/begin.jpg'" onclick="start()">
+		</p>
+		<audio id="right" src="config/right.mp3"></audio>
+		<audio id="wrong" src="config/wrong.mp3"></audio>
+	</center>
+	<script>
+		var lives = 3;
+		function dead() {
+			lives = 3;
+			document.getElementById('questionarea').innerHTML = "<img src='config/dead.jpg'> <br> <img src='config/ta.jpg' onmouseover='this.src=`config/hoverta.jpg`' onmouseout='this.src=`config/ta.jpg`' onclick='start()'>";
+		}
+		function start() {
+			document.getElementById('questionarea').innerHTML = "<img src='question1/question.jpg'> <br> <img src='question1/ans1.jpg' onmouseover='this.src=`question1/hover1.jpg`' onmouseout='this.src=`question1/ans1.jpg`' onclick='ques1(1)'> <img src='question1/ans2.jpg' onmouseover='this.src=`question1/hover2.jpg`' onmouseout='this.src=`question1/ans2.jpg`' onclick='ques1(2)'> <br><img src='question1/ans3.jpg' onmouseover='this.src=`question1/hover3.jpg`' onmouseout='this.src=`question1/ans3.jpg`' onclick='ques1(3)'> <img src='question1/ans4.jpg' onmouseover='this.src=`question1/hover4.jpg`' onmouseout='this.src=`question1/ans4.jpg`' onclick='ques1(4)'>";
+			document.getElementById('questionarea').innerHTML += "<br> <img src='config/lives.jpg'> <img src='config/3.jpg'>";
+		}
+		function ques1(num) {
+			if (num != "2") {
+				var audio = document.getElementById('wrong');
+				audio.play();
+				lives--;
+				if (lives == 2) {
+					document.getElementById('questionarea').innerHTML = "<img src='question1/question.jpg'> <br> <img src='question1/ans1.jpg' onmouseover='this.src=`question1/hover1.jpg`' onmouseout='this.src=`question1/ans1.jpg`' onclick='ques1(1)'> <img src='question1/ans2.jpg' onmouseover='this.src=`question1/hover2.jpg`' onmouseout='this.src=`question1/ans2.jpg`' onclick='ques1(2)'> <br><img src='question1/ans3.jpg' onmouseover='this.src=`question1/hover3.jpg`' onmouseout='this.src=`question1/ans3.jpg`' onclick='ques1(3)'> <img src='question1/ans4.jpg' onmouseover='this.src=`question1/hover4.jpg`' onmouseout='this.src=`question1/ans4.jpg`' onclick='ques1(4)'>";
+					document.getElementById('questionarea').innerHTML += "<br> <img src='config/lives.jpg'> <img src='config/2.jpg'>";
+				}
+				if (lives == 1) {
+					document.getElementById('questionarea').innerHTML = "<img src='question1/question.jpg'> <br> <img src='question1/ans1.jpg' onmouseover='this.src=`question1/hover1.jpg`' onmouseout='this.src=`question1/ans1.jpg`' onclick='ques1(1)'> <img src='question1/ans2.jpg' onmouseover='this.src=`question1/hover2.jpg`' onmouseout='this.src=`question1/ans2.jpg`' onclick='ques1(2)'> <br><img src='question1/ans3.jpg' onmouseover='this.src=`question1/hover3.jpg`' onmouseout='this.src=`question1/ans3.jpg`' onclick='ques1(3)'> <img src='question1/ans4.jpg' onmouseover='this.src=`question1/hover4.jpg`' onmouseout='this.src=`question1/ans4.jpg`' onclick='ques1(4)'>";
+						document.getElementById('questionarea').innerHTML += "<br> <img src='config/lives.jpg'> <img src='config/1.jpg'>";
+
+				}
+				if (lives == 0) {
+					dead();
+				}
+			} else {
+				var audio = document.getElementById('right');
+				audio.play();
+				document.getElementById('questionarea').innerHTML = "<img src='question2/question.jpg'> <br> <img src='question2/ans1.jpg' onmouseover='this.src=`question2/hover1.jpg`' onmouseout='this.src=`question2/ans1.jpg`' onclick='ques2(1)'> <img src='question2/ans2.jpg' onmouseover='this.src=`question2/hover2.jpg`' onmouseout='this.src=`question2/ans2.jpg`' onclick='ques2(2)'> <br><img src='question2/ans3.jpg' onmouseover='this.src=`question2/hover3.jpg`' onmouseout='this.src=`question2/ans3.jpg`' onclick='ques2(3)'> <img src='question2/ans4.jpg' onmouseover='this.src=`question2/hover4.jpg`' onmouseout='this.src=`question2/ans4.jpg`' onclick='ques2(4)'>";
+				if (lives == 3) {
+					document.getElementById('questionarea').innerHTML += "<br> <img src='config/lives.jpg'> <img src='config/3.jpg'>";
+				}
+				if (lives == 2) {
+					document.getElementById('questionarea').innerHTML += "<br> <img src='config/lives.jpg'> <img src='config/2.jpg'>";
+				}
+				if (lives == 1) {
+					document.getElementById('questionarea').innerHTML += "<br> <img src='config/lives.jpg'> <img src='config/1.jpg'>";
+
+				}
+			}
+		}
+		function ques2(num) {
+			if (num != "4") {
+				var audio = document.getElementById('wrong');
+				audio.play();
+
+				lives--;
+				if (lives == 2) {
+					document.getElementById('questionarea').innerHTML = "<img src='question2/question.jpg'> <br> <img src='question2/ans1.jpg' onmouseover='this.src=`question2/hover1.jpg`' onmouseout='this.src=`question2/ans1.jpg`' onclick='ques2(1)'> <img src='question2/ans2.jpg' onmouseover='this.src=`question2/hover2.jpg`' onmouseout='this.src=`question2/ans2.jpg`' onclick='ques2(2)'> <br><img src='question2/ans3.jpg' onmouseover='this.src=`question2/hover3.jpg`' onmouseout='this.src=`question2/ans3.jpg`' onclick='ques2(3)'> <img src='question2/ans4.jpg' onmouseover='this.src=`question2/hover4.jpg`' onmouseout='this.src=`question2/ans4.jpg`' onclick='ques2(4)'>";
+					document.getElementById('questionarea').innerHTML += "<br> <img src='config/lives.jpg'> <img src='config/2.jpg'>";
+				}
+				if (lives == 1) {
+					document.getElementById('questionarea').innerHTML = "<img src='question2/question.jpg'> <br> <img src='question2/ans1.jpg' onmouseover='this.src=`question2/hover1.jpg`' onmouseout='this.src=`question2/ans1.jpg`' onclick='ques2(1)'> <img src='question2/ans2.jpg' onmouseover='this.src=`question2/hover2.jpg`' onmouseout='this.src=`question2/ans2.jpg`' onclick='ques2(2)'> <br><img src='question2/ans3.jpg' onmouseover='this.src=`question2/hover3.jpg`' onmouseout='this.src=`question2/ans3.jpg`' onclick='ques2(3)'> <img src='question2/ans4.jpg' onmouseover='this.src=`question2/hover4.jpg`' onmouseout='this.src=`question2/ans4.jpg`' onclick='ques2(4)'>";
+					document.getElementById('questionarea').innerHTML += "<br> <img src='config/lives.jpg'> <img src='config/1.jpg'>";
+
+				}
+				if (lives == 0) {
+					dead();
+				}
+			} else {
+				var audio = document.getElementById('right');
+				audio.play();
+				document.getElementById('questionarea').innerHTML = "<img src='question3/qp1.jpg'> <img src='question3/qp2.jpg' onmouseover='this.src=`question3/hoverqp2.jpg`' onmouseout='this.src=`question3/qp2.jpg`' onclick='ques3(0)'> <br> <img src='question3/ans1.jpg' onmouseover='this.src=`question3/hover1.jpg`' onmouseout='this.src=`question3/ans1.jpg`' onclick='ques3(1)'> <img src='question3/ans2.jpg' onmouseover='this.src=`question3/hover2.jpg`' onmouseout='this.src=`question3/ans2.jpg`' onclick='ques3(2)'> <br><img src='question3/ans3.jpg' onmouseover='this.src=`question3/hover3.jpg`' onmouseout='this.src=`question3/ans3.jpg`' onclick='ques3(3)'> <img src='question3/ans4.jpg' onmouseover='this.src=`question3/hover4.jpg`' onmouseout='this.src=`question3/ans4.jpg`' onclick='ques3(4)'>";
+				if (lives == 3) {
+					document.getElementById('questionarea').innerHTML += "<br> <img src='config/lives.jpg'> <img src='config/3.jpg'>";
+				}
+				if (lives == 2) {
+					document.getElementById('questionarea').innerHTML += "<br> <img src='config/lives.jpg'> <img src='config/2.jpg'>";
+				}
+				if (lives == 1) {
+					document.getElementById('questionarea').innerHTML += "<br> <img src='config/lives.jpg'> <img src='config/1.jpg'>";
+				}
+			}
+		}
+
+		function ques3(num) {
+			if (num != "0") {
+				var audio = document.getElementById('wrong');
+				audio.play();
+				lives--;
+				if (lives == 2) {
+					document.getElementById('questionarea').innerHTML = "<img src='question3/qp1.jpg'> <img src='question3/qp2.jpg' onmouseover='this.src=`question3/hoverqp2.jpg`' onmouseout='this.src=`question3/qp2.jpg`' onclick='ques3(0)'> <br> <img src='question3/ans1.jpg' onmouseover='this.src=`question3/hover1.jpg`' onmouseout='this.src=`question3/ans1.jpg`' onclick='ques3(1)'> <img src='question3/ans2.jpg' onmouseover='this.src=`question3/hover2.jpg`' onmouseout='this.src=`question3/ans2.jpg`' onclick='ques3(2)'> <br><img src='question3/ans3.jpg' onmouseover='this.src=`question3/hover3.jpg`' onmouseout='this.src=`question3/ans3.jpg`' onclick='ques3(3)'> <img src='question3/ans4.jpg' onmouseover='this.src=`question3/hover4.jpg`' onmouseout='this.src=`question3/ans4.jpg`' onclick='ques3(4)'>";
+					document.getElementById('questionarea').innerHTML += "<br> <img src='config/lives.jpg'> <img src='config/2.jpg'>";
+				} 
+				if (lives == 1) {
+					document.getElementById('questionarea').innerHTML = "<img src='question3/qp1.jpg'> <img src='question3/qp2.jpg' onmouseover='this.src=`question3/hoverqp2.jpg`' onmouseout='this.src=`question3/qp2.jpg`' onclick='ques3(0)'> <br> <img src='question3/ans1.jpg' onmouseover='this.src=`question3/hover1.jpg`' onmouseout='this.src=`question3/ans1.jpg`' onclick='ques3(1)'> <img src='question3/ans2.jpg' onmouseover='this.src=`question3/hover2.jpg`' onmouseout='this.src=`question3/ans2.jpg`' onclick='ques3(2)'> <br><img src='question3/ans3.jpg' onmouseover='this.src=`question3/hover3.jpg`' onmouseout='this.src=`question3/ans3.jpg`' onclick='ques3(3)'> <img src='question3/ans4.jpg' onmouseover='this.src=`question3/hover4.jpg`' onmouseout='this.src=`question3/ans4.jpg`' onclick='ques3(4)'>";
+					document.getElementById('questionarea').innerHTML += "<br> <img src='config/lives.jpg'> <img src='config/1.jpg'>";
+				}
+				if (lives == 0) {
+					dead();
+				}
+			} else {
+				var audio = document.getElementById('right');
+				audio.play();
+				document.getElementById('questionarea').innerHTML = "<img src='question4/question.jpg'> <br> <img src='question4/ans1.jpg' onmouseover='this.src=`question4/hover1.jpg`' onmouseout='this.src=`question4/ans1.jpg`' onclick='ques4(1)'> <img src='question4/ans2.jpg' onmouseover='this.src=`question4/hover2.jpg`' onmouseout='this.src=`question4/ans2.jpg`' onclick='ques4(2)'> <br><img src='question4/ans3.jpg' onmouseover='this.src=`question4/hover3.jpg`' onmouseout='this.src=`question4/ans3.jpg`' onclick='ques4(3)'> <img src='question4/ans4.jpg' onmouseover='this.src=`question4/hover4.jpg`' onmouseout='this.src=`question4/ans4.jpg`' onclick='ques4(4)'>";
+				if (lives == 3) {
+					document.getElementById('questionarea').innerHTML += "<br> <img src='config/lives.jpg'> <img src='config/3.jpg'>";
+				}
+				if (lives == 2) {
+					document.getElementById('questionarea').innerHTML += "<br> <img src='config/lives.jpg'> <img src='config/2.jpg'>";
+				}
+				if (lives == 1) {
+					document.getElementById('questionarea').innerHTML += "<br> <img src='config/lives.jpg'> <img src='config/1.jpg'>";
+				}
+			}
+		}
+
+		function ques4(num) {
+			if (num != "1") {
+				var audio = document.getElementById('wrong');
+				audio.play();
+				lives--;
+				if (lives == 2) {
+					document.getElementById('questionarea').innerHTML = "<img src='question4/question.jpg'> <br> <img src='question4/ans1.jpg' onmouseover='this.src=`question4/hover1.jpg`' onmouseout='this.src=`question4/ans1.jpg`' onclick='ques4(1)'> <img src='question4/ans2.jpg' onmouseover='this.src=`question4/hover2.jpg`' onmouseout='this.src=`question4/ans2.jpg`' onclick='ques4(2)'> <br><img src='question4/ans3.jpg' onmouseover='this.src=`question4/hover3.jpg`' onmouseout='this.src=`question4/ans3.jpg`' onclick='ques4(3)'> <img src='question4/ans4.jpg' onmouseover='this.src=`question4/hover4.jpg`' onmouseout='this.src=`question4/ans4.jpg`' onclick='ques4(4)'>";
+					document.getElementById('questionarea').innerHTML += "<br> <img src='config/lives.jpg'> <img src='config/2.jpg'>";
+				}
+				if (lives == 1) {
+					document.getElementById('questionarea').innerHTML = "<img src='question4/question.jpg'> <br> <img src='question4/ans1.jpg' onmouseover='this.src=`question4/hover1.jpg`' onmouseout='this.src=`question4/ans1.jpg`' onclick='ques4(1)'> <img src='question4/ans2.jpg' onmouseover='this.src=`question4/hover2.jpg`' onmouseout='this.src=`question4/ans2.jpg`' onclick='ques4(2)'> <br><img src='question4/ans3.jpg' onmouseover='this.src=`question4/hover3.jpg`' onmouseout='this.src=`question4/ans3.jpg`' onclick='ques4(3)'> <img src='question4/ans4.jpg' onmouseover='this.src=`question4/hover4.jpg`' onmouseout='this.src=`question4/ans4.jpg`' onclick='ques4(4)'>";
+					document.getElementById('questionarea').innerHTML += "<br> <img src='config/lives.jpg'> <img src='config/1.jpg'>";
+				}
+				if (lives == 0) {
+					dead();
+				}
+			} else {
+				var audio = document.getElementById('right');
+				audio.play();
+				document.getElementById('questionarea').innerHTML = "<img src='question5/qp1.jpg' onmouseover='this.src=`question5/hoverqp1.jpg`' onmouseout='this.src=`question5/qp1.jpg`' onclick='ques5(0)'> <img src='question5/qp2.jpg'> <br> <img src='question5/ans1.jpg' onmouseover='this.src=`question5/hover1.jpg`' onmouseout='this.src=`question5/ans1.jpg`' onclick='ques5(1)'> <img src='question5/ans2.jpg' onmouseover='this.src=`question5/hover2.jpg`' onmouseout='this.src=`question5/ans2.jpg`' onclick='ques5(2)'> <br><img src='question5/ans3.jpg' onmouseover='this.src=`question5/hover3.jpg`' onmouseout='this.src=`question5/ans3.jpg`' onclick='ques5(3)'> <img src='question5/ans4.jpg' onmouseover='this.src=`question5/hover4.jpg`' onmouseout='this.src=`question5/ans4.jpg`' onclick='ques5(4)'>";
+				if (lives == 3) {
+					document.getElementById('questionarea').innerHTML += "<br> <img src='config/lives.jpg'> <img src='config/3.jpg'>";
+				}
+				if (lives == 2) {
+					document.getElementById('questionarea').innerHTML += "<br> <img src='config/lives.jpg'> <img src='config/2.jpg'>";
+				}
+				if (lives == 1) {
+					document.getElementById('questionarea').innerHTML += "<br> <img src='config/lives.jpg'> <img src='config/1.jpg'>";
+				}
+			}
+		}
+
+		function ques5(num) {
+			if (num != "0") {
+				var audio = document.getElementById('wrong');
+				audio.play();
+				lives--;
+				if (lives == 2) {
+					document.getElementById('questionarea').innerHTML = "<img src='question5/qp1.jpg' onmouseover='this.src=`question5/hoverqp1.jpg`' onmouseout='this.src=`question5/qp1.jpg`' onclick='ques5(0)'> <img src='question5/qp2.jpg'> <br> <img src='question5/ans1.jpg' onmouseover='this.src=`question5/hover1.jpg`' onmouseout='this.src=`question5/ans1.jpg`' onclick='ques5(1)'> <img src='question5/ans2.jpg' onmouseover='this.src=`question5/hover2.jpg`' onmouseout='this.src=`question5/ans2.jpg`' onclick='ques5(2)'> <br><img src='question5/ans3.jpg' onmouseover='this.src=`question5/hover3.jpg`' onmouseout='this.src=`question5/ans3.jpg`' onclick='ques5(3)'> <img src='question5/ans4.jpg' onmouseover='this.src=`question5/hover4.jpg`' onmouseout='this.src=`question5/ans4.jpg`' onclick='ques5(4)'>";
+					document.getElementById('questionarea').innerHTML += "<br> <img src='config/lives.jpg'> <img src='config/2.jpg'>";
+				}
+				if (lives == 1) {
+					document.getElementById('questionarea').innerHTML = "<img src='question5/qp1.jpg' onmouseover='this.src=`question5/hoverqp1.jpg`' onmouseout='this.src=`question5/qp1.jpg`' onclick='ques5(0)'> <img src='question5/qp2.jpg'> <br> <img src='question5/ans1.jpg' onmouseover='this.src=`question5/hover1.jpg`' onmouseout='this.src=`question5/ans1.jpg`' onclick='ques5(1)'> <img src='question5/ans2.jpg' onmouseover='this.src=`question5/hover2.jpg`' onmouseout='this.src=`question5/ans2.jpg`' onclick='ques5(2)'> <br><img src='question5/ans3.jpg' onmouseover='this.src=`question5/hover3.jpg`' onmouseout='this.src=`question5/ans3.jpg`' onclick='ques5(3)'> <img src='question5/ans4.jpg' onmouseover='this.src=`question5/hover4.jpg`' onmouseout='this.src=`question5/ans4.jpg`' onclick='ques5(4)'>";
+					document.getElementById('questionarea').innerHTML += "<br> <img src='config/lives.jpg'> <img src='config/1.jpg'>";
+				}
+				if (lives == 0) {
+					dead();
+				}
+			} else {
+				var audio = document.getElementById('right');
+				audio.play();
+				document.getElementById('questionarea').innerHTML = "<img src='question6/question.jpg'> <br> <img src='question6/ans1.jpg' onmouseover='this.src=`question6/hover1.jpg`' onmouseout='this.src=`question6/ans1.jpg`' onclick='ques6(1)'> <img src='question6/ans2.jpg' onmouseover='this.src=`question6/hover2.jpg`' onmouseout='this.src=`question6/ans2.jpg`' onclick='ques6(2)'> <br><img src='question6/ans3.jpg' onmouseover='this.src=`question6/hover3.jpg`' onmouseout='this.src=`question6/ans3.jpg`' onclick='ques6(3)'> <img src='question6/ans4.jpg' onmouseover='this.src=`question6/hover4.jpg`' onmouseout='this.src=`question6/ans4.jpg`' onclick='ques6(4)'>";
+				if (lives == 3) {
+					document.getElementById('questionarea').innerHTML += "<br> <img src='config/lives.jpg'> <img src='config/3.jpg'>";
+				}
+				if (lives == 2) {
+					document.getElementById('questionarea').innerHTML += "<br> <img src='config/lives.jpg'> <img src='config/2.jpg'>";
+				}
+				if (lives == 1) {
+					document.getElementById('questionarea').innerHTML += "<br> <img src='config/lives.jpg'> <img src='config/1.jpg'>";
+				}
+			}
+		}
+
+		function ques6(num) {
+			if (num != "3") {
+				var audio = document.getElementById('wrong');
+				audio.play();
+				lives--;
+				if (lives == 2) {
+					document.getElementById('questionarea').innerHTML = "<img src='question6/question.jpg'> <br> <img src='question6/ans1.jpg' onmouseover='this.src=`question6/hover1.jpg`' onmouseout='this.src=`question6/ans1.jpg`' onclick='ques6(1)'> <img src='question6/ans2.jpg' onmouseover='this.src=`question6/hover2.jpg`' onmouseout='this.src=`question6/ans2.jpg`' onclick='ques6(2)'> <br><img src='question6/ans3.jpg' onmouseover='this.src=`question6/hover3.jpg`' onmouseout='this.src=`question6/ans3.jpg`' onclick='ques6(3)'> <img src='question6/ans4.jpg' onmouseover='this.src=`question6/hover4.jpg`' onmouseout='this.src=`question6/ans4.jpg`' onclick='ques6(4)'>";
+					document.getElementById('questionarea').innerHTML += "<br> <img src='config/lives.jpg'> <img src='config/2.jpg'>";
+				}
+				if (lives == 1) {
+					document.getElementById('questionarea').innerHTML = "<img src='question6/question.jpg'> <br> <img src='question6/ans1.jpg' onmouseover='this.src=`question6/hover1.jpg`' onmouseout='this.src=`question6/ans1.jpg`' onclick='ques6(1)'> <img src='question6/ans2.jpg' onmouseover='this.src=`question6/hover2.jpg`' onmouseout='this.src=`question6/ans2.jpg`' onclick='ques6(2)'> <br><img src='question6/ans3.jpg' onmouseover='this.src=`question6/hover3.jpg`' onmouseout='this.src=`question6/ans3.jpg`' onclick='ques6(3)'> <img src='question6/ans4.jpg' onmouseover='this.src=`question6/hover4.jpg`' onmouseout='this.src=`question6/ans4.jpg`' onclick='ques6(4)'>";
+					document.getElementById('questionarea').innerHTML += "<br> <img src='config/lives.jpg'> <img src='config/1.jpg'>";
+				}
+				if (lives == 0) {
+					dead();
+				}
+			} else {
+				var audio = document.getElementById('right');
+				audio.play();
+			}
+		}
+	</script>
+	</body>
+</html>
